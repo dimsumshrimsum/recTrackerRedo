@@ -17,6 +17,15 @@ function RecipeCreate({ handleFormSubmit }) {
   }
   function handleSubmit(event) {
     event.preventDefault();
+    if (
+      formInput.name.trim() === "" ||
+      formInput.cuisine.trim() === "" ||
+      formInput.ingredients.trim() === "" ||
+      formInput.preparation.trim() === ""
+    ) {
+      console.log("Please fill in all required fields");
+      return;
+    }
     handleFormSubmit(formInput);
 
     setFormInput({
@@ -80,7 +89,7 @@ function RecipeCreate({ handleFormSubmit }) {
             <td>
               <input
                 id="photo"
-                type="text"
+                type="url"
                 name="photo"
                 placeholder={focus.photo}
                 onFocus={handleFocus}
